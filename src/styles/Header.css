@@ -1,0 +1,49 @@
+.header {
+  background-color: #abffb6; /* Verde claro pastel */
+  color: #004d00; /* Texto en verde oscuro (para contraste) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #444;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0077b6;
+}
+
+.user-icon {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.user-icon:hover {
+  transform: scale(1.1);
+}
