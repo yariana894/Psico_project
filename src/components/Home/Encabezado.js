@@ -6,7 +6,7 @@ const Encabezado = () => {
     <section className="encabezado">
       <video
         className="video-fondo"
-        src="/assets/videos/Arboles.mp4"
+        src="/assets/videos/therapy.mp4"
         autoPlay
         loop
         muted

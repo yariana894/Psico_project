@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/Header.css";
 
 const Header = () => {
@@ -11,12 +11,13 @@ const Header = () => {
         <a href="/notes" className="nav-link">
           Notas
         </a>
-        <a href="/login" />
-        <img
-          src="/assets/images/icono_login.svg"
-          alt="Inicio sesión"
-          className="user-icon"
-        />
+        <Link to="/login">
+          <img
+            src="/assets/images/icono_login.svg"
+            alt="Inicio sesión"
+            className="user-icon"
+          />
+        </Link>
       </div>
     </header>
   );

@@ -26,28 +26,36 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Entrar</button>
-      </form>
-      <p className="text-muted">
-        ¿No tienes cuenta? <Link to="/register">Créala ahora</Link>
-      </p>
+    <div className="login-page">
+      {/* 🎬 VIDEO DE FONDO */}
+      <video autoPlay muted loop className="video-bg">
+        <source src="/assets/videos/Arboles.mp4" type="video/mp4" />
+      </video>
+
+      {/* FORMULARIO */}
+      <div className="auth-container">
+        <h2>Iniciar Sesión</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Correo electrónico"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Entrar</button>
+        </form>
+        <p className="text-muted">
+          ¿No tienes cuenta? <Link to="/register">Créala ahora</Link>
+        </p>
+      </div>
     </div>
   );
 };
