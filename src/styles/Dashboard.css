@@ -1,0 +1,18 @@
+.dashboard {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.btn-notes {
+  display: inline-block;
+  background-color: #4e73df;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-notes:hover {
+  background-color: #2e59d9;
+}

@@ -1,18 +1,35 @@
 .header {
-  background-color: #fcfcfc; /* Verde claro pastel */
-  color: #004d00; /* Texto en verde oscuro (para contraste) */
+   background-color: rgba(252, 252, 252, 1);
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  color: #004d00; 
+
+  /* organiza los elementos (logo y enlaces) en línea y centrados verticalmente. */
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* agrega espacio interno. */
   padding: 15px 40px;
+
+  /* hace que el header se quede pegado arriba al hacer scroll. */
   position: sticky;
   top: 0;
+
+  /* asegura que el header esté por encima de otros elementos */
   z-index: 10;
+
+  /* le da una ligera sombra para separar visualmente el header del contenido */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.header.scrolled {
+  /* Cuando haces scroll se transparenta el header */
+  background-color: rgba(252, 252, 252, 0.8);
+  backdrop-filter: blur(6px);
+}
 
 .logo {
+  /* Hace que el texto del logo sea grande y destacado (1.8rem, bold), con un color gris oscuro */
   font-size: 1.8rem;
   font-weight: bold;
   color: #333;
@@ -20,12 +37,14 @@
 }
 
 .header-right {
+  /* alinea horizontalmente con espacio entre ellos */
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
 .nav-link {
+  /* Quita el subrayado (text-decoration: none), define color y transición suave */
   text-decoration: none;
   color: #444;
   font-size: 1rem;
@@ -33,10 +52,12 @@
 }
 
 .nav-link:hover {
+  /* En el :hover cambia el color al azul al pasar por encima el raton */
   color: #0077b6;
 }
 
 .user-icon {
+  /* hace un efecto al pasar por encima el ratón */
   width: 36px;
   height: 36px;
   cursor: pointer;

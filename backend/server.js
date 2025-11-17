@@ -12,13 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🧷 Conexión a MongoDB
+// Conexión MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ Conectado a MongoDB"))
   .catch((err) => console.log("❌ Error de conexión:", err));
 
-// 🔐 Middleware para verificar token
+// Middleware token
 const verifyToken = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ message: "Acceso denegado" });
@@ -32,7 +32,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-// 📦 Registro
+// Registro
 app.post("/api/register", async (req, res) => {
   const { email, password } = req.body;
   const exists = await User.findOne({ email });
@@ -45,7 +45,7 @@ app.post("/api/register", async (req, res) => {
   res.json({ success: true, message: "Usuario registrado con éxito" });
 });
 
-// 🔑 Login
+// Login
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -58,13 +58,17 @@ app.post("/api/login", async (req, res) => {
   res.json({ success: true, token });
 });
 
-// 🗒️ Obtener notas del usuario
+// ✅ Obtener notas
 app.get("/api/notes", verifyToken, async (req, res) => {
-  const notes = await Note.find({ userId: req.userId });
-  res.json(notes);
+  try {
+    const notes = await Note.find({ userId: req.userId }).sort({ createdAt: -1 });
+    res.json(notes);
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error al obtener notas" });
+  }
 });
 
-// ➕ Crear una nota
+// Crear nota
 app.post("/api/notes", verifyToken, async (req, res) => {
   const { title, description } = req.body;
   const note = new Note({ title, description, userId: req.userId });
@@ -72,12 +76,23 @@ app.post("/api/notes", verifyToken, async (req, res) => {
   res.json({ success: true, note });
 });
 
-// 🗑️ Eliminar una nota
+// Actualizar nota
+app.put("/api/notes/:id", verifyToken, async (req, res) => {
+  const { title, description } = req.body;
+  const updatedNote = await Note.findOneAndUpdate(
+    { _id: req.params.id, userId: req.userId },
+    { title, description },
+    { new: true }
+  );
+  res.json({ success: true, note: updatedNote });
+});
+
+// Eliminar nota
 app.delete("/api/notes/:id", verifyToken, async (req, res) => {
   await Note.findOneAndDelete({ _id: req.params.id, userId: req.userId });
   res.json({ success: true });
 });
 
-// 🚀 Iniciar servidor
+// Iniciar servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
