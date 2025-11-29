@@ -4,15 +4,16 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import Notes from "./components/Notes/Notes";
-import Dashboard from "./components/Notes/Dashboard";
-import NoteList from "./components/Notes/NoteList";
-import ProtectedRoute from "./components/Notes/ProtectedRoute";
+
+import PatientList from "./components/Patients/PatientList";
+import PatientDetails from "./components/Patients/PatientDetails";
+import ProtectedRoute from "./components/Patients/ProtectedRoute"; // si quieres lo puedes mover a /components/Shared
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -21,35 +22,31 @@ function App() {
     <Router>
       <Header />
       <Routes>
+        {/* Rutas públicas */}
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        
-        {/* Ruta protegida */}
+
+        {/* Rutas protegidas */}
         <Route
-          path="/noteList"
+          path="/patients"
           element={
             <ProtectedRoute>
-              <NoteList />
+              <PatientList />
             </ProtectedRoute>
           }
         />
+
         <Route
-          path="/notes"
+          path="/patients/:id"
           element={
             <ProtectedRoute>
-              <Notes />
+              <PatientDetails />
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/dashboard"
-          element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/notes"
-          element={isAuthenticated ? <Notes /> : <Navigate to="/login" />}
-        />
+
+        {/* Redirigir todo lo demás al login */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
       <Footer />

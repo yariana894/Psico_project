@@ -24,12 +24,12 @@ const Header = () => {
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="header-left">
         <Link className="logo" to="/">
-          PSICO
+          ClinicData
         </Link>
       </div>
       <div className="header-right">
         <a href="/notes" className="nav-link">
-          Notas
+          Pacientes
         </a>
 
         {/* Si no hay token, mostrar icono de login */}

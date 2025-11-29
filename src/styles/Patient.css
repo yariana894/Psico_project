@@ -1,0 +1,194 @@
+/* Contenedor principal de la página */
+.patients-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Título */
+.patients-page h2 {
+  margin-bottom: 20px;
+  color: #004d99;
+  text-align: center;
+}
+
+/* Contenedor del formulario */
+.patient-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.patient-form input,
+.patient-form textarea,
+.patient-form select {
+  flex: 1 1 200px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-form input:focus,
+.patient-form textarea:focus,
+.patient-form select:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 5px rgba(0,119,182,0.2);
+}
+
+/* Botón crear paciente */
+.patient-form button {
+  background: linear-gradient(135deg, #0077b6, #00a3ff);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.patient-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,163,255,0.4);
+}
+
+/* Contenedor de tarjetas */
+.patients-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjeta individual */
+.patient-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Cabecera de la tarjeta */
+.patient-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #0077b6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.patient-meta h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #004d99;
+}
+
+/* Cuerpo de la tarjeta */
+.patient-body {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Acciones (botones) */
+.patient-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.patient-actions .delete-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #ff4d4d, #ff6b6b);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.patient-actions .delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255,80,80,0.4);
+}
+
+.patient-actions .details-btn {
+  flex: 1;
+  text-align: center;
+  background: linear-gradient(135deg, #00b894, #00d2b8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.patient-actions .details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,210,184,0.4);
+}
+
+/* Página de detalles */
+.patient-details {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.patient-details h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #004d99;
+}
+
+/* Detalles desplegables */
+.patient-details details {
+  background-color: #f8f9fa;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.patient-details details[open] {
+  background-color: #e0f7ff;
+}
+
+.patient-details summary {
+  font-weight: 600;
+  font-size: 1rem;
+  outline: none;
+}

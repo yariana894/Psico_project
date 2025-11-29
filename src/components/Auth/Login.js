@@ -19,7 +19,7 @@ const Login = () => {
     const data = await res.json();
     if (data.success) {
       localStorage.setItem("token", data.token);
-      navigate("/notes");
+      navigate("/patients");
     } else {
       alert(data.message);
     }
