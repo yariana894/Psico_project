@@ -3,7 +3,7 @@ import "../../styles/Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© 2025 PSICO | Todos los derechos reservados</p>
+      <p>© 2025 ClinicData | Todos los derechos reservados</p>
     </footer>
   );
 };

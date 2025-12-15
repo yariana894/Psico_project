@@ -44,13 +44,14 @@ const PatientList = () => {
       <PatientForm onPatientAdded={handlePatientAdded} />
 
       <div className="patients-container">
-        {Array.isArray(patients) && patients.map((patient) => (
-          <PatientItem
-            key={patient._id}
-            patient={patient}
-            onDelete={handlePatientDeleted}
-          />
-        ))}
+        {Array.isArray(patients) &&
+          patients.map((patient) => (
+            <PatientItem
+              key={patient._id}
+              patient={patient}
+              onDelete={handlePatientDeleted}
+            />
+          ))}
       </div>
     </div>
   );

@@ -16,7 +16,6 @@ import PatientDetails from "./components/Patients/PatientDetails";
 import ProtectedRoute from "./components/Patients/ProtectedRoute"; // si quieres lo puedes mover a /components/Shared
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token");
 
   return (
     <Router>

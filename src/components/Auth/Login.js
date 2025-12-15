@@ -29,7 +29,7 @@ const Login = () => {
     <div className="login-page">
       {/* 🎬 VIDEO DE FONDO */}
       <video autoPlay muted loop className="video-bg">
-        <source src="/assets/videos/Arboles.mp4" type="video/mp4" />
+        <source src="/assets/videos/Archivo_lista_pacientes.mp4" type="video/mp4" />
       </video>
 
       {/* FORMULARIO */}

@@ -13,7 +13,7 @@ const Encabezado = () => {
         playsInline
       />
       <div className="overlay">
-        <h1>Bienvenido a PSICO</h1>
+        <h1>Bienvenido a ClinicData</h1>
         <p>Explora el poder de la mente y el bienestar emocional</p>
       </div>
     </section>

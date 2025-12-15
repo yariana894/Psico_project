@@ -12,7 +12,7 @@ const Descripcion = () => {
         </p>
       </div>
       <div className="imagen">
-        <img src="/assets/images/psico2.jpg" alt="Psicología" />
+        <img src="/assets/images/descripcion.webp" alt="Psicología" />
       </div>
     </section>
   );
