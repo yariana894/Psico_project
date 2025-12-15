@@ -32,6 +32,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
+
 //--------------------USUARIO----------------------------//
 
 // Registro
@@ -68,6 +69,8 @@ app.post("/api/login", async (req, res) => {
   res.json({ success: true, token });
 });
 
+
+
 //----------------------PACIENTES---------------------//
 
 // ✅ Obtener pacientes
@@ -84,17 +87,6 @@ app.get("/api/patients", verifyToken, async (req, res) => {
   }
 });
 
-// ✅ Obtener notas
-/* app.get("/api/notes", verifyToken, async (req, res) => {
-  try {
-    const notes = await Note.find({ userId: req.userId }).sort({ createdAt: -1 });
-    res.json(notes);
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Error al obtener notas" });
-  }
-}); */
-
-// Crear paciente
 // Crear paciente
 app.post("/api/patients", verifyToken, async (req, res) => {
   try {
@@ -138,30 +130,44 @@ app.post("/api/patients", verifyToken, async (req, res) => {
   }
 });
 
-// Crear nota
-/* app.post("/api/notes", verifyToken, async (req, res) => {
-  const { title, description } = req.body;
-  const note = new Note({ title, description, userId: req.userId });
-  await note.save();
-  res.json(note);
-}); */
+// borrar paciente 
+app.delete("/api/patients/:id", verifyToken, async (req, res) => {
+  try {
+    const patientId = req.params.id;
 
-// Actualizar nota
-/* app.put("/api/notes/:id", verifyToken, async (req, res) => {
-  const { title, description } = req.body;
-  const updatedNote = await Note.findOneAndUpdate(
-    { _id: req.params.id, userId: req.userId },
-    { title, description },
-    { new: true }
-  );
-  res.json({ success: true, note: updatedNote });
-}); */
+    // Intentar borrar asegurando que pertenece al psicólogo logueado
+    const deleted = await Patient.findOneAndDelete({
+      _id: patientId,
+      psychologistId: req.psychologistId,
+    });
 
-// Eliminar nota
-/* app.delete("/api/notes/:id", verifyToken, async (req, res) => {
-  await Note.findOneAndDelete({ _id: req.params.id, userId: req.userId });
-  res.json({ success: true });
-}); */
+    if (!deleted) {
+      return res.status(404).json({ message: "Paciente no encontrado o no tienes permisos" });
+    }
+
+    res.json({ message: "Paciente eliminado correctamente", patient: deleted });
+  } catch (error) {
+    console.error("Error borrando paciente:", error);
+    res.status(500).json({ message: "Error interno al eliminar paciente" });
+  }
+});
+
+// Obtener paciente por ID
+app.get("/api/patients/:id", verifyToken, async (req, res) => {
+  try {
+    const patient = await Patient.findOne({
+      _id: req.params.id,
+      psychologistId: req.psychologistId, 
+    });
+
+    if (!patient) return res.status(404).json({ message: "No encontrado" });
+
+    res.json(patient);
+  } catch (error) {
+    res.status(500).json({ message: "Error del servidor" });
+  }
+});
+
 
 //-----------------SERVIDOR-----------------//
 
